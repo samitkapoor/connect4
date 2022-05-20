@@ -8,6 +8,7 @@ class GameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: Text(
           'Connect 4',
           style: GoogleFonts.aBeeZee(
@@ -23,6 +24,19 @@ class GameScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Theme.of(context).scaffoldBackgroundColor,
+              Theme.of(context).appBarTheme.backgroundColor as Color,
+            ],
+            stops: const [0.45, 1],
+          ),
+        ),
       ),
     );
   }
