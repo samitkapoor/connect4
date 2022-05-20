@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:connect4/components/game_board.dart';
+
 class GameScreen extends StatelessWidget {
   const GameScreen({super.key});
 
@@ -37,6 +39,8 @@ class GameScreen extends StatelessWidget {
             stops: const [0.45, 1],
           ),
         ),
+        alignment: Alignment.center,
+        child: const GameBoard(),
       ),
     );
   }
