@@ -1,4 +1,6 @@
-import '../models/coin.dart';
+import 'package:flutter/material.dart';
+
+import 'package:connect4/models/coin.dart';
 
 //player = 1 if it's player 1's turn to play and 2 if it's player 2's turn to play
 int player = 1;
@@ -249,4 +251,19 @@ Result didEnd() {
 
   //if the control flow reaches here that means the game hasn't ended yet!
   return Result.play;
+}
+
+void onRefresh({required GlobalKey key}) {
+  turns = 0;
+  player = 1;
+  end = false;
+
+  for (int i = 0; i < gameState.length; i++) {
+    for (int j = 0; j < gameState.length; j++) {
+      gameState[i][j]['value'] = 0;
+    }
+  }
+
+  // ignore: invalid_use_of_protected_member
+  key.currentState!.setState(() {});
 }

@@ -21,7 +21,7 @@ class Connect4 extends StatelessWidget {
         ),
       ),
       title: 'Connect4',
-      home: const GameScreen(),
+      home: GameScreen(),
     );
   }
 }

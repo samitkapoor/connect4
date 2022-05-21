@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:connect4/components/game_board.dart';
+import 'package:connect4/utils/game_logic.dart';
 
+// ignore: must_be_immutable
 class GameScreen extends StatelessWidget {
-  const GameScreen({super.key});
+  GameScreen({super.key});
+
+  GlobalKey<GameBoardState> gameBoardKey = GlobalKey<GameBoardState>();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +45,31 @@ class GameScreen extends StatelessWidget {
           ),
         ),
         alignment: Alignment.center,
-        child: GameBoard(),
+        child: GameBoard(key: gameBoardKey),
+      ),
+      floatingActionButton: Tooltip(
+        message: 'Refresh',
+        child: InkWell(
+          onTap: () {
+            onRefresh(key: gameBoardKey);
+          },
+          child: Container(
+            width: 100,
+            height: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25),
+              color: Colors.purple,
+            ),
+            alignment: Alignment.center,
+            child: const Text(
+              'Refresh!',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

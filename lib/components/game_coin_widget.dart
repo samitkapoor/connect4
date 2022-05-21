@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:connect4/models/coin.dart';
 
+// ignore: must_be_immutable
 class GameCoinWidget extends StatelessWidget {
   GameCoinWidget({super.key, required this.coin});
 
