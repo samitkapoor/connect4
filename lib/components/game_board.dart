@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:connect4/utils/game_logic.dart';
 import 'package:connect4/components/game_coin_widget.dart';
 
+// ignore: must_be_immutable
 class GameBoard extends StatefulWidget {
-  const GameBoard({super.key});
+  GameBoard({super.key, required this.playerTurnKey});
+
+  GlobalKey playerTurnKey;
 
   @override
   State<GameBoard> createState() => GameBoardState();
@@ -27,13 +30,13 @@ class GameBoardState extends State<GameBoard> {
                   if (end == false) {
                     setState(() {
                       onPlay(
-                        Coin(
-                          row: coin['row'] as int,
-                          column: coin['column'] as int,
-                          selected: false,
-                          color: Theme.of(context).scaffoldBackgroundColor,
-                        ),
-                      );
+                          coin: Coin(
+                            row: coin['row'] as int,
+                            column: coin['column'] as int,
+                            selected: false,
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                          ),
+                          playerTurnKey: widget.playerTurnKey);
                     });
 
                     Result result = didEnd();

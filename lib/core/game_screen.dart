@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:connect4/components/game_board.dart';
+import 'package:connect4/components/player_turn_widget.dart';
 import 'package:connect4/utils/game_logic.dart';
 
 // ignore: must_be_immutable
@@ -9,6 +10,8 @@ class GameScreen extends StatelessWidget {
   GameScreen({super.key});
 
   GlobalKey<GameBoardState> gameBoardKey = GlobalKey<GameBoardState>();
+  GlobalKey<PlayerTurnWidgetState> playerTurnKey =
+      GlobalKey<PlayerTurnWidgetState>();
 
   @override
   Widget build(BuildContext context) {
@@ -45,13 +48,23 @@ class GameScreen extends StatelessWidget {
           ),
         ),
         alignment: Alignment.center,
-        child: GameBoard(key: gameBoardKey),
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const SizedBox(height: 20),
+            PlayerTurnWidget(key: playerTurnKey),
+            const SizedBox(height: 50),
+            Center(
+                child:
+                    GameBoard(key: gameBoardKey, playerTurnKey: playerTurnKey)),
+          ],
+        ),
       ),
       floatingActionButton: Tooltip(
         message: 'Restart game',
         child: InkWell(
           onTap: () {
-            onRestart(key: gameBoardKey);
+            onRestart(gameBoardKey: gameBoardKey, playerTurnKey: playerTurnKey);
           },
           child: Container(
             width: 100,

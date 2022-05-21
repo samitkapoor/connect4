@@ -85,7 +85,7 @@ void switchPlayer() {
   player = (player == 1) ? 2 : 1;
 }
 
-void onPlay(Coin coin) {
+void onPlay({required Coin coin, required GlobalKey playerTurnKey}) {
   int column = coin.column;
   int i = 6;
 
@@ -100,6 +100,9 @@ void onPlay(Coin coin) {
     turns++;
     switchPlayer();
   }
+
+  // ignore: invalid_use_of_protected_member
+  playerTurnKey.currentState!.setState(() {});
 }
 
 Result didEnd() {
@@ -253,7 +256,8 @@ Result didEnd() {
   return Result.play;
 }
 
-void onRestart({required GlobalKey key}) {
+void onRestart(
+    {required GlobalKey gameBoardKey, required GlobalKey playerTurnKey}) {
   turns = 0;
   player = 1;
   end = false;
@@ -265,5 +269,7 @@ void onRestart({required GlobalKey key}) {
   }
 
   // ignore: invalid_use_of_protected_member
-  key.currentState!.setState(() {});
+  gameBoardKey.currentState!.setState(() {});
+  // ignore: invalid_use_of_protected_member
+  playerTurnKey.currentState!.setState(() {});
 }
