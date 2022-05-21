@@ -1,9 +1,16 @@
 import '../models/coin.dart';
 
+//player = 1 if it's player 1's turn to play and 2 if it's player 2's turn to play
 int player = 1;
+//count the number of turns
 int turns = 0;
+//end will be true if the game has ended
 bool end = false;
 
+//play means the game hasn't ended yet
+//draw means the game is over and no one has won the game
+//player1 means the game was won by player1
+//player2 means the game was won by player2
 enum Result { play, draw, player1, player2 }
 
 List<List<Map<String, int>>> gameState = [
@@ -80,13 +87,16 @@ void onPlay(Coin coin) {
   int column = coin.column;
   int i = 6;
 
+  //get the topmost position where we the coin will be dropped into
   while (i >= 0 && gameState[i][column]['value'] != 0) {
     i--;
   }
 
+  //if i < 0 that means that the column is full and no coin can be inserted in that column
   if (i >= 0) {
     gameState[i][column]['value'] = player;
     turns++;
+    switchPlayer();
   }
 }
 
@@ -237,5 +247,6 @@ Result didEnd() {
     }
   }
 
+  //if the control flow reaches here that means the game hasn't ended yet!
   return Result.play;
 }

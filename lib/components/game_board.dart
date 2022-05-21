@@ -5,7 +5,7 @@ import 'package:connect4/utils/game_logic.dart';
 import 'package:connect4/components/game_coin_widget.dart';
 
 class GameBoard extends StatefulWidget {
-  GameBoard({super.key});
+  const GameBoard({super.key});
 
   @override
   State<GameBoard> createState() => _GameBoardState();
@@ -14,10 +14,9 @@ class GameBoard extends StatefulWidget {
 class _GameBoardState extends State<GameBoard> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.width - 20,
       width: MediaQuery.of(context).size.width - 20,
-      color: Colors.black38,
       child: ListView(
         physics: const NeverScrollableScrollPhysics(),
         children: gameState.map((row) {
@@ -35,10 +34,26 @@ class _GameBoardState extends State<GameBoard> {
                           color: Theme.of(context).scaffoldBackgroundColor,
                         ),
                       );
-                      print(didEnd());
-                      switchPlayer();
                     });
+
+                    Result result = didEnd();
+                    //stop the game if the game has ended
+                    if (result != Result.play) {
+                      ScaffoldMessenger.of(context).clearSnackBars();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            (result == Result.draw)
+                                ? 'It\'s a tie!'
+                                : (result == Result.player1)
+                                    ? 'Player 1 Wins!'
+                                    : 'Player 2 Wins!',
+                          ),
+                        ),
+                      );
+                    }
                   } else {
+                    ScaffoldMessenger.of(context).clearSnackBars();
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text('Game Over'),

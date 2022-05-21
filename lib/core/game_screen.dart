@@ -19,6 +19,7 @@ class GameScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
+            tooltip: 'How to play?',
             onPressed: () {},
             icon: const Icon(
               Icons.info_outline_rounded,
