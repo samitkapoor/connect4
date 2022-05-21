@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Coin {
-  bool selected = false;
-  Color color = Colors.transparent;
+  int row;
+  int column;
+  bool selected;
+  Color color;
+  Coin({
+    required this.row,
+    required this.column,
+    required this.selected,
+    required this.color,
+  });
 }
