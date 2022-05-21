@@ -40,7 +40,7 @@ class GameScreen extends StatelessWidget {
           ),
         ),
         alignment: Alignment.center,
-        child: const GameBoard(),
+        child: GameBoard(),
       ),
     );
   }
