@@ -253,7 +253,7 @@ Result didEnd() {
   return Result.play;
 }
 
-void onRefresh({required GlobalKey key}) {
+void onRestart({required GlobalKey key}) {
   turns = 0;
   player = 1;
   end = false;

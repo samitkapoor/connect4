@@ -48,21 +48,21 @@ class GameScreen extends StatelessWidget {
         child: GameBoard(key: gameBoardKey),
       ),
       floatingActionButton: Tooltip(
-        message: 'Refresh',
+        message: 'Restart game',
         child: InkWell(
           onTap: () {
-            onRefresh(key: gameBoardKey);
+            onRestart(key: gameBoardKey);
           },
           child: Container(
             width: 100,
             height: 50,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
-              color: Colors.purple,
+              color: Colors.white10,
             ),
             alignment: Alignment.center,
             child: const Text(
-              'Refresh!',
+              'Restart',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,

@@ -14,7 +14,7 @@ import 'package:connect4/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const GameScreen());
+    await tester.pumpWidget(GameScreen());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
