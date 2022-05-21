@@ -25,17 +25,26 @@ class _GameBoardState extends State<GameBoard> {
             children: row.map((coin) {
               return InkWell(
                 onTap: () {
-                  setState(() {
-                    onPlay(
-                      Coin(
-                        row: coin['row'] as int,
-                        column: coin['column'] as int,
-                        selected: false,
-                        color: Theme.of(context).scaffoldBackgroundColor,
+                  if (end == false) {
+                    setState(() {
+                      onPlay(
+                        Coin(
+                          row: coin['row'] as int,
+                          column: coin['column'] as int,
+                          selected: false,
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                        ),
+                      );
+                      print(didEnd());
+                      switchPlayer();
+                    });
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Game Over'),
                       ),
                     );
-                    switchPlayer();
-                  });
+                  }
                 },
                 child: GameCoinWidget(
                   coin: (coin['value'] == 0)

@@ -1,6 +1,10 @@
 import '../models/coin.dart';
 
 int player = 1;
+int turns = 0;
+bool end = false;
+
+enum Result { play, draw, player1, player2 }
 
 List<List<Map<String, int>>> gameState = [
   [
@@ -82,5 +86,156 @@ void onPlay(Coin coin) {
 
   if (i >= 0) {
     gameState[i][column]['value'] = player;
+    turns++;
   }
+}
+
+Result didEnd() {
+  if (turns == 49) {
+    end = true;
+    return Result.draw;
+  }
+
+  for (int i = 0; i < gameState.length; i++) {
+    for (int j = 0; j < gameState[i].length; j++) {
+      //left
+      if (gameState[i][j]['value'] == 0) continue;
+      if (j >= 3 &&
+          j <= 6 &&
+          gameState[i][j]['value'] == gameState[i][j - 1]['value'] &&
+          gameState[i][j - 1]['value'] == gameState[i][j - 2]['value'] &&
+          gameState[i][j - 2]['value'] == gameState[i][j - 3]['value']) {
+        if (gameState[i][j]['value'] == 1) {
+          end = true;
+          return Result.player1;
+        } else {
+          end = true;
+          return Result.player2;
+        }
+      }
+
+      //right
+      else if (j >= 0 &&
+          j <= 3 &&
+          gameState[i][j]['value'] == gameState[i][j + 1]['value'] &&
+          gameState[i][j + 1]['value'] == gameState[i][j + 2]['value'] &&
+          gameState[i][j + 2]['value'] == gameState[i][j + 3]['value']) {
+        if (gameState[i][j]['value'] == 1) {
+          end = true;
+          return Result.player1;
+        } else {
+          end = true;
+          return Result.player2;
+        }
+      }
+
+      //up
+      else if (i >= 3 &&
+          i <= 6 &&
+          gameState[i][j]['value'] == gameState[i - 1][j]['value'] &&
+          gameState[i - 1][j]['value'] == gameState[i - 2][j]['value'] &&
+          gameState[i - 2][j]['value'] == gameState[i - 3][j]['value']) {
+        if (gameState[i][j]['value'] == 1) {
+          end = true;
+          return Result.player1;
+        } else {
+          end = true;
+          return Result.player2;
+        }
+      }
+
+      //down
+      else if (i >= 0 &&
+          i <= 3 &&
+          gameState[i][j]['value'] == gameState[i + 1][j]['value'] &&
+          gameState[i + 1][j]['value'] == gameState[i + 2][j]['value'] &&
+          gameState[i + 2][j]['value'] == gameState[i + 3][j]['value']) {
+        if (gameState[i][j]['value'] == 1) {
+          end = true;
+          return Result.player1;
+        } else {
+          end = true;
+          return Result.player2;
+        }
+      }
+
+      //up-left
+      else if (i >= 3 &&
+          j >= 3 &&
+          i <= 6 &&
+          j <= 6 &&
+          gameState[i][j]['value'] == gameState[i - 1][j - 1]['value'] &&
+          gameState[i - 1][j - 1]['value'] ==
+              gameState[i - 2][j - 2]['value'] &&
+          gameState[i - 2][j - 2]['value'] ==
+              gameState[i - 3][j - 3]['value']) {
+        if (gameState[i][j]['value'] == 1) {
+          end = true;
+          return Result.player1;
+        } else {
+          end = true;
+          return Result.player2;
+        }
+      }
+
+      //up-right
+      else if (i >= 3 &&
+          j >= 0 &&
+          i <= 6 &&
+          j <= 3 &&
+          gameState[i][j]['value'] == gameState[i - 1][j + 1]['value'] &&
+          gameState[i - 1][j + 1]['value'] ==
+              gameState[i - 2][j + 2]['value'] &&
+          gameState[i - 2][j + 2]['value'] ==
+              gameState[i - 3][j + 3]['value']) {
+        if (gameState[i][j]['value'] == 1) {
+          end = true;
+          return Result.player1;
+        } else {
+          end = true;
+          return Result.player2;
+        }
+      }
+
+      //down-right
+      else if (i >= 0 &&
+          i <= 3 &&
+          j >= 0 &&
+          j <= 3 &&
+          gameState[i][j]['value'] == gameState[i + 1][j + 1]['value'] &&
+          gameState[i + 1][j + 1]['value'] ==
+              gameState[i + 2][j + 2]['value'] &&
+          gameState[i + 2][j + 2]['value'] ==
+              gameState[i + 3][j + 3]['value']) {
+        if (gameState[i][j]['value'] == 1) {
+          end = true;
+          return Result.player1;
+        } else {
+          end = true;
+          return Result.player2;
+        }
+      }
+
+      //down-left
+      else if (i >= 0 &&
+          i <= 3 &&
+          j >= 3 &&
+          j <= 6 &&
+          gameState[i][j]['value'] == gameState[i + 1][j - 1]['value'] &&
+          gameState[i + 1][j - 1]['value'] ==
+              gameState[i + 2][j - 2]['value'] &&
+          gameState[i + 2][j - 2]['value'] ==
+              gameState[i + 3][j - 3]['value']) {
+        if (gameState[i][j]['value'] == 1) {
+          end = true;
+          return Result.player1;
+        } else {
+          end = true;
+          return Result.player2;
+        }
+      }
+    }
+  }
+
+  return Result.play;
 }
