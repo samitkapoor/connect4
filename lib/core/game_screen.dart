@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:connect4/components/game_board.dart';
 import 'package:connect4/components/player_turn_widget.dart';
 import 'package:connect4/utils/game_logic.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 // ignore: must_be_immutable
 class GameScreen extends StatelessWidget {
@@ -27,7 +28,9 @@ class GameScreen extends StatelessWidget {
         actions: [
           IconButton(
             tooltip: 'How to play?',
-            onPressed: () {},
+            onPressed: () {
+              launchUrlString('https://en.wikipedia.org/wiki/Connect_Four');
+            },
             icon: const Icon(
               Icons.info_outline_rounded,
               color: Colors.white,
