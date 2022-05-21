@@ -77,13 +77,15 @@ class GameBoardState extends State<GameBoard> {
                               row: coin['row'] as int,
                               column: coin['column'] as int,
                               selected: true,
-                              color: const Color(0xff01bfbf),
+                              // color: const Color(0xff01bfbf),
+                              color: Colors.red,
                             )
                           : Coin(
                               row: coin['row'] as int,
                               column: coin['column'] as int,
                               selected: true,
-                              color: const Color(0xfff49880),
+                              // color: const Color(0xfff49880),
+                              color: Colors.yellow,
                             ),
                 ),
               );
