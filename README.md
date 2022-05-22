@@ -1,16 +1,16 @@
-# connect4
+# connect-4
 
-A new Flutter project.
+This is a mobile version of the famous [Connect Four](https://en.wikipedia.org/wiki/Connect_Four) game made using Flutter!
 
-## Getting Started
+## Screenshot of the Project
 
-This project is a starting point for a Flutter application.
+<img height= 600 src="https://user-images.githubusercontent.com/77121931/169661117-c3dce44e-dd8c-43b4-bd24-a6305fb3ef52.png"/>
 
-A few resources to get you started if this is your first Flutter project:
+## Packages Used: 
+google_fonts - https://pub.dev/packages/google_fonts <br />
+url_launcher - https://pub.dev/packages/url_launcher <br />
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Connect with me on:
+Linkedin: https://www.linkedin.com/in/samit-kapoor/ <br />
+Instagram: https://www.instagram.com/im_samit/ <br />
+Gmail: samitkapoor77@gmail.com
