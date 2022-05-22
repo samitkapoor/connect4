@@ -58,8 +58,11 @@ class GameScreen extends StatelessWidget {
             PlayerTurnWidget(key: playerTurnKey),
             const SizedBox(height: 50),
             Center(
-                child:
-                    GameBoard(key: gameBoardKey, playerTurnKey: playerTurnKey)),
+                child: GameBoard(
+              key: gameBoardKey,
+              playerTurnKey: playerTurnKey,
+              gameBoardKey: gameBoardKey,
+            )),
           ],
         ),
       ),

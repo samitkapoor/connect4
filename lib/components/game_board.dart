@@ -6,8 +6,9 @@ import 'package:connect4/components/game_coin_widget.dart';
 
 // ignore: must_be_immutable
 class GameBoard extends StatefulWidget {
-  GameBoard({super.key, required this.playerTurnKey});
-
+  GameBoard(
+      {super.key, required this.playerTurnKey, required this.gameBoardKey});
+  GlobalKey gameBoardKey;
   GlobalKey playerTurnKey;
 
   @override
@@ -26,18 +27,17 @@ class GameBoardState extends State<GameBoard> {
           return Row(
             children: row.map((coin) {
               return InkWell(
-                onTap: () {
+                onTap: () async {
                   if (end == false) {
-                    setState(() {
-                      onPlay(
-                          coin: Coin(
-                            row: coin['row'] as int,
-                            column: coin['column'] as int,
-                            selected: false,
-                            color: Theme.of(context).scaffoldBackgroundColor,
-                          ),
-                          playerTurnKey: widget.playerTurnKey);
-                    });
+                    await onPlay(
+                        coin: Coin(
+                          row: coin['row'] as int,
+                          column: coin['column'] as int,
+                          selected: false,
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                        ),
+                        playerTurnKey: widget.playerTurnKey,
+                        gameBoardKey: widget.gameBoardKey);
 
                     Result result = didEnd();
                     //stop the game if the game has ended

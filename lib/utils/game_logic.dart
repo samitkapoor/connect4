@@ -85,7 +85,30 @@ void switchPlayer() {
   player = (player == 1) ? 2 : 1;
 }
 
-void onPlay({required Coin coin, required GlobalKey playerTurnKey}) {
+Future<void> playAnimation(
+    {required int row,
+    required int col,
+    required GlobalKey gameBoardKey,
+    required int player}) async {
+  int i = 0;
+  while (i < row) {
+    gameState[i][col]['value'] = player;
+    // ignore: invalid_use_of_protected_member
+    gameBoardKey.currentState!.setState(() {});
+    await Future.delayed(const Duration(milliseconds: 30)).then((val) {
+      gameState[i][col]['value'] = 0;
+      // ignore: invalid_use_of_protected_member
+      gameBoardKey.currentState!.setState(() {});
+      i++;
+    });
+  }
+  return Future.value();
+}
+
+Future<void> onPlay(
+    {required Coin coin,
+    required GlobalKey playerTurnKey,
+    required GlobalKey gameBoardKey}) async {
   int column = coin.column;
   int i = 6;
 
@@ -96,13 +119,24 @@ void onPlay({required Coin coin, required GlobalKey playerTurnKey}) {
 
   //if i < 0 that means that the column is full and no coin can be inserted in that column
   if (i >= 0) {
+    await playAnimation(
+      row: i,
+      col: column,
+      gameBoardKey: gameBoardKey,
+      player: player,
+    );
+
     gameState[i][column]['value'] = player;
     turns++;
     switchPlayer();
   }
 
   // ignore: invalid_use_of_protected_member
+  gameBoardKey.currentState!.setState(() {});
+  // ignore: invalid_use_of_protected_member
   playerTurnKey.currentState!.setState(() {});
+
+  return Future.value();
 }
 
 Result didEnd() {
