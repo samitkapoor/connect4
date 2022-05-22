@@ -51,18 +51,22 @@ class GameScreen extends StatelessWidget {
           ),
         ),
         alignment: Alignment.center,
-        child: ListView(
-          padding: EdgeInsets.zero,
+        child: Stack(
+          alignment: Alignment.center,
           children: [
-            const SizedBox(height: 20),
-            PlayerTurnWidget(key: playerTurnKey),
-            const SizedBox(height: 50),
-            Center(
-                child: GameBoard(
+            SizedBox(
+              height: MediaQuery.of(context).size.height -
+                  MediaQuery.of(context).padding.top,
+            ),
+            GameBoard(
               key: gameBoardKey,
               playerTurnKey: playerTurnKey,
               gameBoardKey: gameBoardKey,
-            )),
+            ),
+            Positioned(
+              top: 10,
+              child: PlayerTurnWidget(key: playerTurnKey),
+            ),
           ],
         ),
       ),

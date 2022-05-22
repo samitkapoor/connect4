@@ -18,7 +18,7 @@ class PlayerTurnWidgetState extends State<PlayerTurnWidget> {
     return Text(
       'Turn: Player $player',
       style: GoogleFonts.openSans(
-        color: Colors.white,
+        color: (player == 1) ? Colors.red : Colors.yellow,
         fontWeight: FontWeight.w400,
         fontSize: 25,
       ),
