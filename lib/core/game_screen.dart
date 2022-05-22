@@ -74,7 +74,11 @@ class GameScreen extends StatelessWidget {
         message: 'Restart game',
         child: InkWell(
           onTap: () {
-            onRestart(gameBoardKey: gameBoardKey, playerTurnKey: playerTurnKey);
+            onRestart(
+              gameBoardKey: gameBoardKey,
+              playerTurnKey: playerTurnKey,
+              context: context,
+            );
           },
           child: Container(
             width: 100,
