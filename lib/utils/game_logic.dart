@@ -154,15 +154,17 @@ Result didEnd() {
           gameState[i][j]['value'] == gameState[i][j - 1]['value'] &&
           gameState[i][j - 1]['value'] == gameState[i][j - 2]['value'] &&
           gameState[i][j - 2]['value'] == gameState[i][j - 3]['value']) {
-        gameState[i][j]['value'] = gameState[i][j - 1]['value'] =
-            gameState[i][j - 2]['value'] = gameState[i][j - 3]['value'] = 3;
+        Result result;
         if (gameState[i][j]['value'] == 1) {
           end = true;
-          return Result.player1;
+          result = Result.player1;
         } else {
           end = true;
-          return Result.player2;
+          result = Result.player2;
         }
+        gameState[i][j]['value'] = gameState[i][j - 1]['value'] =
+            gameState[i][j - 2]['value'] = gameState[i][j - 3]['value'] = 3;
+        return result;
       }
 
       //right
@@ -171,15 +173,17 @@ Result didEnd() {
           gameState[i][j]['value'] == gameState[i][j + 1]['value'] &&
           gameState[i][j + 1]['value'] == gameState[i][j + 2]['value'] &&
           gameState[i][j + 2]['value'] == gameState[i][j + 3]['value']) {
-        gameState[i][j]['value'] = gameState[i][j + 1]['value'] =
-            gameState[i][j + 2]['value'] = gameState[i][j + 3]['value'] = 3;
+        Result result;
         if (gameState[i][j]['value'] == 1) {
           end = true;
-          return Result.player1;
+          result = Result.player1;
         } else {
           end = true;
-          return Result.player2;
+          result = Result.player2;
         }
+        gameState[i][j]['value'] = gameState[i][j + 1]['value'] =
+            gameState[i][j + 2]['value'] = gameState[i][j + 3]['value'] = 3;
+        return result;
       }
 
       //up
@@ -188,15 +192,17 @@ Result didEnd() {
           gameState[i][j]['value'] == gameState[i - 1][j]['value'] &&
           gameState[i - 1][j]['value'] == gameState[i - 2][j]['value'] &&
           gameState[i - 2][j]['value'] == gameState[i - 3][j]['value']) {
-        gameState[i][j]['value'] = gameState[i - 1][j]['value'] =
-            gameState[i - 2][j]['value'] = gameState[i - 3][j]['value'] = 3;
+        Result result;
         if (gameState[i][j]['value'] == 1) {
           end = true;
-          return Result.player1;
+          result = Result.player1;
         } else {
           end = true;
-          return Result.player2;
+          result = Result.player2;
         }
+        gameState[i][j]['value'] = gameState[i - 1][j]['value'] =
+            gameState[i - 2][j]['value'] = gameState[i - 3][j]['value'] = 3;
+        return result;
       }
 
       //down
@@ -205,15 +211,17 @@ Result didEnd() {
           gameState[i][j]['value'] == gameState[i + 1][j]['value'] &&
           gameState[i + 1][j]['value'] == gameState[i + 2][j]['value'] &&
           gameState[i + 2][j]['value'] == gameState[i + 3][j]['value']) {
-        gameState[i][j]['value'] = gameState[i + 1][j]['value'] =
-            gameState[i + 2][j]['value'] = gameState[i + 3][j]['value'] = 3;
+        Result result;
         if (gameState[i][j]['value'] == 1) {
           end = true;
-          return Result.player1;
+          result = Result.player1;
         } else {
           end = true;
-          return Result.player2;
+          result = Result.player2;
         }
+        gameState[i][j]['value'] = gameState[i + 1][j]['value'] =
+            gameState[i + 2][j]['value'] = gameState[i + 3][j]['value'] = 3;
+        return result;
       }
 
       //up-left
@@ -226,16 +234,18 @@ Result didEnd() {
               gameState[i - 2][j - 2]['value'] &&
           gameState[i - 2][j - 2]['value'] ==
               gameState[i - 3][j - 3]['value']) {
+        Result result;
+        if (gameState[i][j]['value'] == 1) {
+          end = true;
+          result = Result.player1;
+        } else {
+          end = true;
+          result = Result.player2;
+        }
         gameState[i][j]['value'] = gameState[i - 1][j - 1]['value'] =
             gameState[i - 2][j - 2]['value'] =
                 gameState[i - 3][j - 3]['value'] = 3;
-        if (gameState[i][j]['value'] == 1) {
-          end = true;
-          return Result.player1;
-        } else {
-          end = true;
-          return Result.player2;
-        }
+        return result;
       }
 
       //up-right
@@ -248,16 +258,18 @@ Result didEnd() {
               gameState[i - 2][j + 2]['value'] &&
           gameState[i - 2][j + 2]['value'] ==
               gameState[i - 3][j + 3]['value']) {
+        Result result;
+        if (gameState[i][j]['value'] == 1) {
+          end = true;
+          result = Result.player1;
+        } else {
+          end = true;
+          result = Result.player2;
+        }
         gameState[i][j]['value'] = gameState[i - 1][j + 1]['value'] =
             gameState[i - 2][j + 2]['value'] =
                 gameState[i - 3][j + 3]['value'] = 3;
-        if (gameState[i][j]['value'] == 1) {
-          end = true;
-          return Result.player1;
-        } else {
-          end = true;
-          return Result.player2;
-        }
+        return result;
       }
 
       //down-right
@@ -270,16 +282,18 @@ Result didEnd() {
               gameState[i + 2][j + 2]['value'] &&
           gameState[i + 2][j + 2]['value'] ==
               gameState[i + 3][j + 3]['value']) {
+        Result result;
+        if (gameState[i][j]['value'] == 1) {
+          end = true;
+          result = Result.player1;
+        } else {
+          end = true;
+          result = Result.player2;
+        }
         gameState[i][j]['value'] = gameState[i + 1][j + 1]['value'] =
             gameState[i + 2][j + 2]['value'] =
                 gameState[i + 3][j + 3]['value'] = 3;
-        if (gameState[i][j]['value'] == 1) {
-          end = true;
-          return Result.player1;
-        } else {
-          end = true;
-          return Result.player2;
-        }
+        return result;
       }
 
       //down-left
@@ -292,16 +306,18 @@ Result didEnd() {
               gameState[i + 2][j - 2]['value'] &&
           gameState[i + 2][j - 2]['value'] ==
               gameState[i + 3][j - 3]['value']) {
+        Result result;
+        if (gameState[i][j]['value'] == 1) {
+          end = true;
+          result = Result.player1;
+        } else {
+          end = true;
+          result = Result.player2;
+        }
         gameState[i][j]['value'] = gameState[i + 1][j - 1]['value'] =
             gameState[i + 2][j - 2]['value'] =
                 gameState[i + 3][j - 3]['value'] = 3;
-        if (gameState[i][j]['value'] == 1) {
-          end = true;
-          return Result.player1;
-        } else {
-          end = true;
-          return Result.player2;
-        }
+        return result;
       }
     }
   }
