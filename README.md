@@ -14,4 +14,4 @@ This is a mobile version of the famous [Connect Four](https://en.wikipedia.org/w
 
 - [Linkedin](https://www.linkedin.com/in/samit-kapoor/) <br />
 - [Instagram](https://www.instagram.com/im_samit/) <br />
-- [Gmail](samitkapoor77@gmail.com)
+- [Gmail](https://mail.google.com/mail/u/0/?fs=1&to=samitkapoor77@gmail.com&tf=cm)
