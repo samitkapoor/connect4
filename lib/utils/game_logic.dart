@@ -95,7 +95,7 @@ Future<void> playAnimation(
     gameState[i][col]['value'] = player;
     // ignore: invalid_use_of_protected_member
     gameBoardKey.currentState!.setState(() {});
-    await Future.delayed(const Duration(milliseconds: 30)).then((val) {
+    await Future.delayed(const Duration(milliseconds: 20)).then((val) {
       gameState[i][col]['value'] = 0;
       // ignore: invalid_use_of_protected_member
       gameBoardKey.currentState!.setState(() {});
@@ -154,6 +154,8 @@ Result didEnd() {
           gameState[i][j]['value'] == gameState[i][j - 1]['value'] &&
           gameState[i][j - 1]['value'] == gameState[i][j - 2]['value'] &&
           gameState[i][j - 2]['value'] == gameState[i][j - 3]['value']) {
+        gameState[i][j]['value'] = gameState[i][j - 1]['value'] =
+            gameState[i][j - 2]['value'] = gameState[i][j - 3]['value'] = 3;
         if (gameState[i][j]['value'] == 1) {
           end = true;
           return Result.player1;
@@ -169,6 +171,8 @@ Result didEnd() {
           gameState[i][j]['value'] == gameState[i][j + 1]['value'] &&
           gameState[i][j + 1]['value'] == gameState[i][j + 2]['value'] &&
           gameState[i][j + 2]['value'] == gameState[i][j + 3]['value']) {
+        gameState[i][j]['value'] = gameState[i][j + 1]['value'] =
+            gameState[i][j + 2]['value'] = gameState[i][j + 3]['value'] = 3;
         if (gameState[i][j]['value'] == 1) {
           end = true;
           return Result.player1;
@@ -184,6 +188,8 @@ Result didEnd() {
           gameState[i][j]['value'] == gameState[i - 1][j]['value'] &&
           gameState[i - 1][j]['value'] == gameState[i - 2][j]['value'] &&
           gameState[i - 2][j]['value'] == gameState[i - 3][j]['value']) {
+        gameState[i][j]['value'] = gameState[i - 1][j]['value'] =
+            gameState[i - 2][j]['value'] = gameState[i - 3][j]['value'] = 3;
         if (gameState[i][j]['value'] == 1) {
           end = true;
           return Result.player1;
@@ -199,6 +205,8 @@ Result didEnd() {
           gameState[i][j]['value'] == gameState[i + 1][j]['value'] &&
           gameState[i + 1][j]['value'] == gameState[i + 2][j]['value'] &&
           gameState[i + 2][j]['value'] == gameState[i + 3][j]['value']) {
+        gameState[i][j]['value'] = gameState[i + 1][j]['value'] =
+            gameState[i + 2][j]['value'] = gameState[i + 3][j]['value'] = 3;
         if (gameState[i][j]['value'] == 1) {
           end = true;
           return Result.player1;
@@ -218,6 +226,9 @@ Result didEnd() {
               gameState[i - 2][j - 2]['value'] &&
           gameState[i - 2][j - 2]['value'] ==
               gameState[i - 3][j - 3]['value']) {
+        gameState[i][j]['value'] = gameState[i - 1][j - 1]['value'] =
+            gameState[i - 2][j - 2]['value'] =
+                gameState[i - 3][j - 3]['value'] = 3;
         if (gameState[i][j]['value'] == 1) {
           end = true;
           return Result.player1;
@@ -237,6 +248,9 @@ Result didEnd() {
               gameState[i - 2][j + 2]['value'] &&
           gameState[i - 2][j + 2]['value'] ==
               gameState[i - 3][j + 3]['value']) {
+        gameState[i][j]['value'] = gameState[i - 1][j + 1]['value'] =
+            gameState[i - 2][j + 2]['value'] =
+                gameState[i - 3][j + 3]['value'] = 3;
         if (gameState[i][j]['value'] == 1) {
           end = true;
           return Result.player1;
@@ -256,6 +270,9 @@ Result didEnd() {
               gameState[i + 2][j + 2]['value'] &&
           gameState[i + 2][j + 2]['value'] ==
               gameState[i + 3][j + 3]['value']) {
+        gameState[i][j]['value'] = gameState[i + 1][j + 1]['value'] =
+            gameState[i + 2][j + 2]['value'] =
+                gameState[i + 3][j + 3]['value'] = 3;
         if (gameState[i][j]['value'] == 1) {
           end = true;
           return Result.player1;
@@ -275,6 +292,9 @@ Result didEnd() {
               gameState[i + 2][j - 2]['value'] &&
           gameState[i + 2][j - 2]['value'] ==
               gameState[i + 3][j - 3]['value']) {
+        gameState[i][j]['value'] = gameState[i + 1][j - 1]['value'] =
+            gameState[i + 2][j - 2]['value'] =
+                gameState[i + 3][j - 3]['value'] = 3;
         if (gameState[i][j]['value'] == 1) {
           end = true;
           return Result.player1;

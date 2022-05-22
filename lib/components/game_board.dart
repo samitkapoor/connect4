@@ -42,6 +42,7 @@ class GameBoardState extends State<GameBoard> {
                     Result result = didEnd();
                     //stop the game if the game has ended
                     if (result != Result.play) {
+                      setState(() {});
                       ScaffoldMessenger.of(context).clearSnackBars();
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
@@ -80,13 +81,20 @@ class GameBoardState extends State<GameBoard> {
                               // color: const Color(0xff01bfbf),
                               color: Colors.blue,
                             )
-                          : Coin(
-                              row: coin['row'] as int,
-                              column: coin['column'] as int,
-                              selected: true,
-                              // color: const Color(0xfff49880),
-                              color: Colors.green,
-                            ),
+                          : (coin['value'] == 2)
+                              ? Coin(
+                                  row: coin['row'] as int,
+                                  column: coin['column'] as int,
+                                  selected: true,
+                                  // color: const Color(0xfff49880),
+                                  color: Colors.green,
+                                )
+                              : Coin(
+                                  row: coin['row'] as int,
+                                  column: coin['column'] as int,
+                                  selected: true,
+                                  color: Colors.yellow,
+                                ),
                 ),
               );
             }).toList(),
