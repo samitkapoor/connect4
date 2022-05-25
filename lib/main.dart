@@ -14,9 +14,9 @@ class Connect4 extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xff131942),
+        scaffoldBackgroundColor: const Color(0xff6E8894),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xff180c17),
+          backgroundColor: Color(0xff1a090d),
           centerTitle: true,
         ),
       ),
