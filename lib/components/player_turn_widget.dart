@@ -17,9 +17,9 @@ class PlayerTurnWidgetState extends State<PlayerTurnWidget> {
   Widget build(BuildContext context) {
     return Text(
       'Turn: Player $player',
-      style: GoogleFonts.openSans(
+      style: GoogleFonts.besley(
         color: Colors.black,
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.bold,
         fontSize: 25,
       ),
       textAlign: TextAlign.center,
