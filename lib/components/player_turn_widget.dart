@@ -20,7 +20,7 @@ class PlayerTurnWidgetState extends State<PlayerTurnWidget> {
       style: GoogleFonts.besley(
         color: Colors.black,
         fontWeight: FontWeight.bold,
-        fontSize: 25,
+        fontSize: 22,
       ),
       textAlign: TextAlign.center,
     );

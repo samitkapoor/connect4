@@ -61,15 +61,15 @@ class GameBoardState extends State<GameBoard> {
                                   : (result == Result.player1)
                                       ? 'Player 1 wins'
                                       : 'Player 2 wins',
-                              style: GoogleFonts.roboto(
+                              style: GoogleFonts.aBeeZee(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
                             title: Text(
                               'GAME OVER!',
-                              style: GoogleFonts.chelseaMarket(
-                                fontWeight: FontWeight.bold,
+                              style: GoogleFonts.davidLibre(
+                                fontWeight: FontWeight.w900,
                                 color: Colors.black,
                                 fontSize: 28,
                               ),
@@ -79,17 +79,20 @@ class GameBoardState extends State<GameBoard> {
                       );
                     }
                   } else {
+                    Result result = didEnd();
+                    print(result);
                     ScaffoldMessenger.of(context).clearSnackBars();
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(
                           'Game Over!',
-                          style: GoogleFonts.chelseaMarket(
+                          style: GoogleFonts.aBeeZee(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
-                            fontSize: 22,
+                            fontSize: 20,
                           ),
                         ),
+                        backgroundColor: Colors.black,
                       ),
                     );
                   }

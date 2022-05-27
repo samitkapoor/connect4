@@ -23,6 +23,7 @@ class GameScreen extends StatelessWidget {
           'Connect 4',
           style: GoogleFonts.aBeeZee(
             fontWeight: FontWeight.w600,
+            fontSize: 24,
           ),
         ),
         actions: [
