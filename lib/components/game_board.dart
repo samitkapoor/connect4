@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:connect4/utils/game_logic.dart';
 import 'package:connect4/components/game_coin_widget.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // ignore: must_be_immutable
 class GameBoard extends StatefulWidget {
@@ -43,24 +44,45 @@ class GameBoardState extends State<GameBoard> {
                     //stop the game if the game has ended
                     if (result != Result.play) {
                       setState(() {});
-                      ScaffoldMessenger.of(context).clearSnackBars();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            (result == Result.draw)
-                                ? 'It\'s a tie!'
-                                : (result == Result.player1)
-                                    ? 'Player 1 Wins!'
-                                    : 'Player 2 Wins!',
-                          ),
-                        ),
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            backgroundColor: Colors.white.withOpacity(0.9),
+                            content: Text(
+                              (result == Result.draw)
+                                  ? 'It\'s a tie'
+                                  : (result == Result.player1)
+                                      ? 'Player 1 wins'
+                                      : 'Player 2 wins',
+                              style: GoogleFonts.roboto(
+                                fontSize: 24,
+                              ),
+                            ),
+                            title: Text(
+                              'GAME OVER!',
+                              style: GoogleFonts.chelseaMarket(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                                fontSize: 28,
+                              ),
+                            ),
+                          );
+                        },
                       );
                     }
                   } else {
                     ScaffoldMessenger.of(context).clearSnackBars();
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Game Over'),
+                      SnackBar(
+                        content: Text(
+                          'Game Over!',
+                          style: GoogleFonts.chelseaMarket(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize: 22,
+                          ),
+                        ),
                       ),
                     );
                   }
