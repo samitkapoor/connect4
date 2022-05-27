@@ -48,7 +48,13 @@ class GameBoardState extends State<GameBoard> {
                         context: context,
                         builder: (context) {
                           return AlertDialog(
-                            backgroundColor: Colors.white.withOpacity(0.9),
+                            backgroundColor: (result == Result.draw)
+                                ? Colors.white.withOpacity(0.9)
+                                : (result == Result.player1)
+                                    ? const Color(0xffffa69e).withOpacity(0.9)
+                                    : const Color(0xffb6eea6).withOpacity(0.9),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15)),
                             content: Text(
                               (result == Result.draw)
                                   ? 'It\'s a tie'
@@ -57,6 +63,7 @@ class GameBoardState extends State<GameBoard> {
                                       : 'Player 2 wins',
                               style: GoogleFonts.roboto(
                                 fontSize: 24,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                             title: Text(
