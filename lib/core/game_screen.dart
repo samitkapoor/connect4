@@ -16,29 +16,30 @@ class GameScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: Text(
-          'Connect 4',
-          style: GoogleFonts.aBeeZee(
-            fontWeight: FontWeight.w600,
-            fontSize: 24,
+    var appBar = AppBar(
+      elevation: 0,
+      title: Text(
+        'Connect 4',
+        style: GoogleFonts.aBeeZee(
+          fontWeight: FontWeight.w600,
+          fontSize: 24,
+        ),
+      ),
+      actions: [
+        IconButton(
+          tooltip: 'How to play?',
+          onPressed: () {
+            launchUrlString('https://en.wikipedia.org/wiki/Connect_Four');
+          },
+          icon: const Icon(
+            Icons.info_outline_rounded,
+            color: Colors.white,
           ),
         ),
-        actions: [
-          IconButton(
-            tooltip: 'How to play?',
-            onPressed: () {
-              launchUrlString('https://en.wikipedia.org/wiki/Connect_Four');
-            },
-            icon: const Icon(
-              Icons.info_outline_rounded,
-              color: Colors.white,
-            ),
-          ),
-        ],
-      ),
+      ],
+    );
+    return Scaffold(
+      appBar: appBar,
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -58,6 +59,7 @@ class GameScreen extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height -
                   MediaQuery.of(context).padding.top,
+              width: MediaQuery.of(context).size.width,
             ),
             GameBoard(
               key: gameBoardKey,
@@ -65,7 +67,12 @@ class GameScreen extends StatelessWidget {
               gameBoardKey: gameBoardKey,
             ),
             Positioned(
-              top: 10,
+              top: (MediaQuery.of(context).size.height -
+                          MediaQuery.of(context).padding.top -
+                          appBar.preferredSize.height) /
+                      2 -
+                  (MediaQuery.of(context).size.width - 20) / 2 -
+                  50,
               child: PlayerTurnWidget(key: playerTurnKey),
             ),
           ],

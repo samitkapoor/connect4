@@ -51,8 +51,8 @@ class GameBoardState extends State<GameBoard> {
                             backgroundColor: (result == Result.draw)
                                 ? Colors.white.withOpacity(0.9)
                                 : (result == Result.player1)
-                                    ? const Color(0xffffa69e).withOpacity(0.9)
-                                    : const Color(0xffb6eea6).withOpacity(0.9),
+                                    ? playerOneColor.withOpacity(0.9)
+                                    : playerTwoColor.withOpacity(0.9),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15)),
                             content: Text(
@@ -110,14 +110,14 @@ class GameBoardState extends State<GameBoard> {
                               row: coin['row'] as int,
                               column: coin['column'] as int,
                               selected: true,
-                              color: const Color(0xffffa69e),
+                              color: playerOneColor,
                             )
                           : (coin['value'] == 2)
                               ? Coin(
                                   row: coin['row'] as int,
                                   column: coin['column'] as int,
                                   selected: true,
-                                  color: const Color(0xffb6eea6),
+                                  color: playerTwoColor,
                                 )
                               : Coin(
                                   row: coin['row'] as int,

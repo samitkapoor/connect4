@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:connect4/models/coin.dart';
 
+Color playerOneColor = const Color(0xffffa69e);
+
+Color playerTwoColor = const Color(0xffb6eea6);
+
 //player = 1 if it's player 1's turn to play and 2 if it's player 2's turn to play
 int player = 1;
 //count the number of turns
