@@ -4,7 +4,7 @@ This is a mobile version of the famous [Connect Four](https://en.wikipedia.org/w
 
 ## Screenshot of the Project
 
-<img height= 700 src="https://user-images.githubusercontent.com/77121931/169704312-c2309197-da63-4607-b4ab-7a3e16782931.gif"/>
+<img height= 700 src="https://user-images.githubusercontent.com/77121931/170816737-2873e51b-279c-49c4-8b06-354cf93441da.gif"/>
 
 ## Packages Used: 
 - [google_fonts](https://pub.dev/packages/google_fonts) <br />
@@ -15,3 +15,5 @@ This is a mobile version of the famous [Connect Four](https://en.wikipedia.org/w
 - [Linkedin](https://www.linkedin.com/in/samit-kapoor/) <br />
 - [Instagram](https://www.instagram.com/im_samit/) <br />
 - [Gmail](https://mail.google.com/mail/u/0/?fs=1&to=samitkapoor77@gmail.com&tf=cm)
+
+
