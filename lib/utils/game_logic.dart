@@ -94,6 +94,8 @@ Future<void> playAnimation(
     required int col,
     required GlobalKey gameBoardKey,
     required int player}) async {
+  //play the coin dropping animation till row - 1 slot
+  print(row);
   int i = 0;
   while (i < row) {
     gameState[i][col]['value'] = player;
@@ -106,6 +108,32 @@ Future<void> playAnimation(
       i++;
     });
   }
+
+  //the bounce effect
+  if (row >= 2) {
+    i = row;
+    while (i >= row - 2) {
+      gameState[i][col]['value'] = player;
+      // ignore: invalid_use_of_protected_member
+      gameBoardKey.currentState!.setState(() {});
+      await Future.delayed(const Duration(milliseconds: 30)).then((val) {
+        gameState[i][col]['value'] = 0;
+        // ignore: invalid_use_of_protected_member
+        gameBoardKey.currentState!.setState(() {});
+      });
+      i--;
+    }
+    i += 2;
+    gameState[i][col]['value'] = player;
+    // ignore: invalid_use_of_protected_member
+    gameBoardKey.currentState!.setState(() {});
+    await Future.delayed(const Duration(milliseconds: 20)).then((val) {
+      gameState[i][col]['value'] = 0;
+      // ignore: invalid_use_of_protected_member
+      gameBoardKey.currentState!.setState(() {});
+    });
+  }
+
   return Future.value();
 }
 

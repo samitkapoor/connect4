@@ -79,8 +79,6 @@ class GameBoardState extends State<GameBoard> {
                       );
                     }
                   } else {
-                    Result result = didEnd();
-                    print(result);
                     ScaffoldMessenger.of(context).clearSnackBars();
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
