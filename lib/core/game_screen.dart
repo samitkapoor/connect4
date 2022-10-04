@@ -7,10 +7,16 @@ import 'package:connect4/utils/game_logic.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 // ignore: must_be_immutable
-class GameScreen extends StatelessWidget {
+class GameScreen extends StatefulWidget {
   GameScreen({super.key});
 
+  @override
+  State<GameScreen> createState() => _GameScreenState();
+}
+
+class _GameScreenState extends State<GameScreen> {
   GlobalKey<GameBoardState> gameBoardKey = GlobalKey<GameBoardState>();
+
   GlobalKey<PlayerTurnWidgetState> playerTurnKey =
       GlobalKey<PlayerTurnWidgetState>();
 
@@ -82,11 +88,29 @@ class GameScreen extends StatelessWidget {
         message: 'Restart game',
         child: InkWell(
           onTap: () {
-            onRestart(
-              gameBoardKey: gameBoardKey,
-              playerTurnKey: playerTurnKey,
-              context: context,
-            );
+            setState(() {});
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    title: Text("Do You Really Want To Restart ?"),
+                    actions: [
+                      TextButton(
+                          onPressed: (() {
+                            Navigator.pop(context);
+                            return onRestart(
+                              gameBoardKey: gameBoardKey,
+                              playerTurnKey: playerTurnKey,
+                              context: context,
+                            );
+                          }),
+                          child: Text("Yes"))
+                    ],
+                  );
+                });
           },
           child: Container(
             width: 100,
